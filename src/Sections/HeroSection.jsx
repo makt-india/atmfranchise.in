@@ -14,7 +14,7 @@ const HeroSection = () => {
   alt="ATM Franchise Business in India"
   className="w-full h-full object-cover object-center md:object-[center_10%] opacity-90"
   loading="eager"
-  fetchPriority="high"
+fetchpriority="high"
   decoding="async"
   onError={(e) => {
     e.target.onerror = null;

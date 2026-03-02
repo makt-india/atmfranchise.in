@@ -163,7 +163,7 @@ const AboutUsHero = memo(() => (
       alt="Leading the ATM Franchise Revolution in India"
       className="absolute inset-0 w-full h-full object-cover opacity-40"
       loading="eager"           // Performance: Load immediately
-      fetchPriority="high"      // SEO: LCP Optimization
+fetchpriority="high"     // SEO: LCP Optimization
       decoding="async"
       onError={(e) => {
         e.target.src = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1920";
