@@ -1,0 +1,121 @@
+# =====================================
+# ATMFRANCHISE.IN — PRODUCTION HARDENED
+# =====================================
+
+Options -Indexes
+ServerSignature Off
+
+RewriteEngine On
+
+# -------------------------------------
+# 1. FORCE HTTPS + NON-WWW CANONICAL
+# -------------------------------------
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^atmfranchise\.in$ [NC]
+RewriteRule ^ https://atmfranchise.in%{REQUEST_URI} [L,R=301]
+
+# -------------------------------------
+# 2. REMOVE TRAILING SLASH (NOT REAL DIR)
+# -------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} .+/$
+RewriteRule ^(.+)/$ https://atmfranchise.in/$1 [L,R=301]
+
+# -------------------------------------
+# 3. BLOCK SENSITIVE FILES
+# -------------------------------------
+<FilesMatch "(^\.|composer\.(json|lock)|package\.json|package-lock\.json|vite\.config\.js|\.env)">
+  Require all denied
+</FilesMatch>
+
+# -------------------------------------
+# 4. PROTECT AGAINST COMMON EXPLOITS
+# -------------------------------------
+RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|<|>|%3C|%3E) [NC]
+RewriteRule .* - [F,L]
+
+# -------------------------------------
+# 5. SERVE SITEMAP & ROBOTS DIRECTLY
+# -------------------------------------
+RewriteRule ^(sitemap\.xml|robots\.txt)$ - [L]
+
+# -------------------------------------
+# 6. STATIC FILES (CACHE SAFE)
+# -------------------------------------
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# -------------------------------------
+# 7. REACT ROUTER FALLBACK
+# -------------------------------------
+RewriteRule ^ index.html [L]
+
+# -------------------------------------
+# 8. BROTLI (IF AVAILABLE)
+# -------------------------------------
+<IfModule mod_brotli.c>
+  BrotliCompressionQuality 5
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# -------------------------------------
+# 9. GZIP FALLBACK
+# -------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# -------------------------------------
+# 10. BROWSER CACHING
+# -------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresDefault "access plus 7 days"
+</IfModule>
+
+# -------------------------------------
+# 11. REMOVE ETAG
+# -------------------------------------
+FileETag None
+
+# -------------------------------------
+# 12. CACHE-CONTROL HEADERS
+# -------------------------------------
+<IfModule mod_headers.c>
+  Header set Cache-Control "public"
+</IfModule>
+
+# -------------------------------------
+# 13. SECURITY HEADERS
+# -------------------------------------
+<IfModule mod_headers.c>
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+
+  # CSP adjusted for GA4 + Meta Pixel + Clarity
+  Header set Content-Security-Policy "
+    default-src 'self';
+    img-src 'self' https: data:;
+    script-src 'self' https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https: 'unsafe-inline';
+    style-src 'self' https: 'unsafe-inline';
+    font-src 'self' https: data:;
+    connect-src 'self' https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https:;
+    frame-src https:;
+  "
+
+</IfModule>

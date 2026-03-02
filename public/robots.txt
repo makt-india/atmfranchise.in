@@ -1,0 +1,44 @@
+# =====================================
+# ATMFRANCHISE.IN — SEO OPTIMIZED ROBOTS
+# =====================================
+
+User-agent: *
+
+# -----------------------------
+# BLOCK SENSITIVE DIRECTORIES
+# -----------------------------
+Disallow: /admin/
+Disallow: /config/
+Disallow: /private/
+Disallow: /.env
+Disallow: /cgi-bin/
+
+# -----------------------------
+# BLOCK INTERNAL SEARCH & FILTERS
+# -----------------------------
+Disallow: /search
+Disallow: /*?s=
+Disallow: /*?query=
+Disallow: /*?filter=
+
+# -----------------------------
+# BLOCK TRACKING PARAMETERS
+# -----------------------------
+Disallow: /*?utm_
+Disallow: /*?ref=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+Disallow: /*?source=
+
+# -----------------------------
+# ALLOW CORE ASSETS
+# -----------------------------
+Allow: /assets/
+Allow: /img/
+Allow: /blog/
+Allow: /
+
+# -----------------------------
+# SITEMAP
+# -----------------------------
+Sitemap: https://atmfranchise.in/sitemap.xml
