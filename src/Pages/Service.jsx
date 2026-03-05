@@ -79,176 +79,101 @@ const steps = [
   }
 ];
 
-const Service = () => {
-   const title =
+
+
+  const Service = () => {
+
+  const title =
     "ATM Franchise Services in India 2026 – EPS, Hitachi, Findi & India1 Comparison";
 
   const description =
-    "Compare top ATM Franchise operators in India including EPS, Hitachi, Findi and India1. Check latest investment cost, commission model, ROI potential and compliance requirements before applying.";
+    "Compare ATM franchise operators in India including EPS, Hitachi, Findi and India1. Learn investment cost, monthly profit, ROI timeline and application process.";
 
- 
   const canonical = "https://atmfranchise.in/service";
-  const image = "https://atmfranchise.in/assets/service-banner.webp";
+
   const modifiedDate = new Date().toISOString();
 
   return (
     <>
-{/* ================= SERVICES SEO ================= */}
-<Helmet prioritizeSeoTags>
+      {/* ================= SEO ================= */}
 
-  {/* ================= PRIMARY SEO ================= */}
-   <title>{title}</title>
+      <Helmet prioritizeSeoTags>
 
-      <meta name="description" content={description} />
-  <meta
-    name="keywords"
-    content="ATM Franchise Services India, EPS ATM Franchise, Hitachi ATM Franchise, Findi ATM Franchise, India1 ATM Franchise, ATM Operator Comparison India, White Label ATM Operators"
-  />
+        <title>{title}</title>
 
-      <meta
-        name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-      />
+        <meta name="description" content={description} />
 
-      <link rel="canonical" href="https://atmfranchise.in/service" />
+        <link rel="canonical" href={canonical} />
 
-      {/* ================= OPEN GRAPH ================= */}
+        <meta
+          name="robots"
+          content="index,follow,max-image-preview:large"
+        />
 
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
-      <meta property="og:site_name" content="ATM Franchise India" />
-      <meta property="og:locale" content="en_IN" />
+        {/* OpenGraph */}
 
-      {/* ================= TWITTER ================= */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+        {/* STRUCTURED DATA */}
 
-      {/* ================= STRUCTURED DATA ================= */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
 
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-
-            {
-              "@type": "Organization",
-              "@id": "https://atmfranchise.in/#organization",
-              "name": "ATM Franchise India",
-              "url": "https://atmfranchise.in/",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://atmfranchise.in/logo2.png"
-              }
-            },
-
-            {
-              "@type": "WebSite",
-              "@id": "https://atmfranchise.in/#website",
-              "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise in India",
-              "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
-              }
-            },
-
-            {
-              "@type": "WebPage",
-              "@id": `${canonical}#webpage`,
-              "url": canonical,
-              "name": title,
-              "dateModified": modifiedDate,
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              }
-            },
-
-            {
-              "@type": "Service",
-              "name": "ATM Franchise Consultation & Operator Comparison",
-              "description": description,
-              "url": canonical,
-              "provider": {
-                "@id": "https://atmfranchise.in/#organization"
+              {
+                "@type": "Organization",
+                "name": "ATM Franchise India",
+                "url": "https://atmfranchise.in/"
               },
-              "areaServed": {
-                "@type": "Country",
-                "name": "India"
+
+              {
+                "@type": "WebPage",
+                "name": title,
+                "url": canonical,
+                "dateModified": modifiedDate
               },
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "INR",
-                "priceSpecification": {
-                  "@type": "PriceSpecification",
-                  "minPrice": "200000",
-                  "maxPrice": "500000",
-                  "priceCurrency": "INR"
-                },
-                "availability": "https://schema.org/InStock",
-                "url": canonical
+
+              {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is the investment for ATM franchise in India?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "ATM franchise investment in India typically ranges between ₹2 lakh to ₹6 lakh depending on the operator and location."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much profit does an ATM franchise generate?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "An ATM franchise can generate ₹25,000 to ₹60,000 monthly depending on transaction volume."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Which ATM franchise is best in India?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Popular ATM franchise operators in India include EPS Bancs, India1 Payments, Hitachi Money Spot and Findi."
+                    }
+                  }
+                ]
               }
-            },
 
-            {
-              "@type": "ItemList",
-              "name": "ATM Operators in India",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "EPS ATM Franchise",
-                  "url": "https://atmfranchise.in/atm-franchise/eps"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Hitachi ATM Franchise",
-                  "url": "https://atmfranchise.in/atm-franchise/hitachi"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Findi ATM Franchise",
-                  "url": "https://atmfranchise.in/atm-franchise/findi"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "India1 ATM Franchise",
-                  "url": "https://atmfranchise.in/atm-franchise/india1"
-                }
-              ]
-            },
+            ]
+          })}
+        </script>
 
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://atmfranchise.in/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Services",
-                  "item": canonical
-                }
-              ]
-            }
+      </Helmet>
 
-          ]
-        })}
-  </script>
 
-</Helmet>
-      {/* ================= HERO ================= */}
 
       <section className="relative pt-12 pb-12 bg-gradient-to-br from-slate-950 via-indigo-950 to-blue-900 text-white overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/20 blur-[120px] rounded-full animate-pulse"></div>

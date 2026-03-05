@@ -24,18 +24,20 @@ const SectionLoader = () => (
 ============================================ */
 
 
+
+
 const HomeSEO = () => (
   <Helmet prioritizeSeoTags>
 
-    {/* ================= PRIMARY SEO ================= */}
+    {/* PRIMARY SEO */}
 
     <title>
-      ATM Franchise in India 2026 – Cost, Profit, Investment & Apply Online
+      ATM Franchise in India 2026 – Cost, Profit, Investment & Monthly Income
     </title>
 
     <meta
       name="description"
-      content="Start an ATM Franchise in India with ₹2–5 lakh investment. Check 2026 setup cost, monthly profit margin, commission per transaction, RBI guidelines and step-by-step online application process."
+      content="ATM Franchise in India with ₹2–5 lakh investment. Learn setup cost, monthly profit, RBI rules, transaction commission and how to apply online."
     />
 
     <meta
@@ -49,16 +51,12 @@ const HomeSEO = () => (
 
     <link rel="canonical" href="https://atmfranchise.in/" />
 
-    {/* ================= HREFLANG ================= */}
+    {/* HREFLANG (only keep if pages exist) */}
 
     <link rel="alternate" hrefLang="en-IN" href="https://atmfranchise.in/" />
-    <link rel="alternate" hrefLang="hi-IN" href="https://atmfranchise.in/hi/" />
-    <link rel="alternate" hrefLang="ta-IN" href="https://atmfranchise.in/ta/" />
-    <link rel="alternate" hrefLang="kn-IN" href="https://atmfranchise.in/kn/" />
-    <link rel="alternate" hrefLang="te-IN" href="https://atmfranchise.in/te/" />
     <link rel="alternate" hrefLang="x-default" href="https://atmfranchise.in/" />
 
-    {/* ================= PRELOAD LCP IMAGE ================= */}
+    {/* LCP IMAGE */}
 
     <link
       rel="preload"
@@ -68,44 +66,53 @@ const HomeSEO = () => (
       fetchpriority="high"
     />
 
-    {/* ================= OPEN GRAPH ================= */}
+    {/* OPEN GRAPH */}
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_IN" />
+
     <meta
       property="og:title"
-      content="ATM Franchise in India 2026 – Invest ₹2–5 Lakh | Cost & Profit Details"
+      content="ATM Franchise in India 2026 – Cost & Profit Guide"
     />
+
     <meta
       property="og:description"
-      content="Low investment ATM Franchise opportunity in India. Check cost breakdown, monthly income potential, RBI compliance and apply online."
+      content="Low investment ATM Franchise opportunity in India. Learn cost, monthly income and how to apply."
     />
+
     <meta property="og:url" content="https://atmfranchise.in/" />
     <meta property="og:site_name" content="ATM Franchise India" />
+
     <meta
       property="og:image"
       content="https://atmfranchise.in/assets/atm-setup.webp"
     />
+
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ATM Franchise setup in India" />
 
-    {/* ================= TWITTER ================= */}
+    {/* TWITTER */}
 
     <meta name="twitter:card" content="summary_large_image" />
+
     <meta
       name="twitter:title"
       content="ATM Franchise in India 2026 | Start Under ₹5 Lakh"
     />
+
     <meta
       name="twitter:description"
-      content="Check ATM Franchise cost, monthly profit margin and apply online. RBI-regulated White Label ATM opportunity across India."
+      content="Check ATM Franchise investment cost, monthly profit margin and application process."
     />
+
     <meta
       name="twitter:image"
       content="https://atmfranchise.in/assets/atm-setup.webp"
     />
 
-    {/* ================= STRUCTURED DATA ================= */}
+    {/* STRUCTURED DATA */}
 
     <script type="application/ld+json">
       {JSON.stringify({
@@ -117,13 +124,19 @@ const HomeSEO = () => (
             "@id": "https://atmfranchise.in/#organization",
             "name": "ATM Franchise India",
             "url": "https://atmfranchise.in/",
-            "logo": "https://atmfranchise.in/logo2.png",
+            "logo": "https://atmfranchise.in/img/common/logo2.png",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+91-88833-35553",
               "contactType": "sales",
               "areaServed": "IN",
-              "availableLanguage": ["English", "Hindi", "Tamil", "Kannada", "Telugu"]
+              "availableLanguage": [
+                "English",
+                "Hindi",
+                "Tamil",
+                "Kannada",
+                "Telugu"
+              ]
             }
           },
 
@@ -131,7 +144,7 @@ const HomeSEO = () => (
             "@type": "WebSite",
             "@id": "https://atmfranchise.in/#website",
             "url": "https://atmfranchise.in/",
-            "name": "ATM Franchise in India",
+            "name": "ATM Franchise India",
             "publisher": {
               "@id": "https://atmfranchise.in/#organization"
             },
@@ -144,6 +157,7 @@ const HomeSEO = () => (
 
           {
             "@type": "Service",
+            "@id": "https://atmfranchise.in/#service",
             "name": "ATM Franchise & White Label ATM Setup",
             "provider": {
               "@id": "https://atmfranchise.in/#organization"
@@ -152,18 +166,8 @@ const HomeSEO = () => (
               "@type": "Country",
               "name": "India"
             },
-            "offers": {
-              "@type": "Offer",
-              "priceCurrency": "INR",
-              "price": "200000",
-              "priceSpecification": {
-                "@type": "PriceSpecification",
-                "minPrice": "200000",
-                "maxPrice": "500000",
-                "priceCurrency": "INR"
-              },
-              "availability": "https://schema.org/InStock"
-            }
+            "description":
+              "Consultation and guidance for starting ATM franchise business including location analysis, operator selection and application support."
           },
 
           {
@@ -174,15 +178,17 @@ const HomeSEO = () => (
                 "name": "What is the cost of ATM Franchise in India?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "The investment required ranges between ₹2 lakh to ₹5 lakh depending on location, operator and installation requirements."
+                  "text":
+                    "ATM franchise investment usually ranges between ₹2 lakh and ₹5 lakh depending on location, operator and installation requirements."
                 }
               },
               {
                 "@type": "Question",
-                "name": "How much profit can I earn from an ATM Franchise?",
+                "name": "How much profit does an ATM franchise generate?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Monthly income depends on transaction volume. ATM operators typically earn commission per withdrawal transaction as per RBI regulated interchange fees."
+                  "text":
+                    "Monthly income depends on transaction volume. Locations with high usage can generate stable commission income per withdrawal transaction."
                 }
               },
               {
@@ -190,20 +196,9 @@ const HomeSEO = () => (
                 "name": "Is White Label ATM legal in India?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. White Label ATMs are permitted by RBI and operated by authorized non-bank entities under regulatory guidelines."
+                  "text":
+                    "Yes. White Label ATMs are authorized by the Reserve Bank of India and operated by licensed non-bank entities under RBI regulations."
                 }
-              }
-            ]
-          },
-
-          {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://atmfranchise.in/"
               }
             ]
           }
@@ -215,10 +210,6 @@ const HomeSEO = () => (
   </Helmet>
 );
 
-
-/* ============================================
-   HOME PAGE
-============================================ */
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-white font-sans">

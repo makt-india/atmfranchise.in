@@ -18,6 +18,7 @@ import { blogPosts, faqData } from "../blog-data";
 
 
 
+
 const BlogSEO = memo(() => {
 
   const title =
@@ -27,13 +28,15 @@ const BlogSEO = memo(() => {
     "Expert ATM Franchise guides in India. Learn White Label ATM investment cost, monthly profit margin, commission structure, RBI regulations and location-based ROI strategies.";
 
   const canonical = "https://atmfranchise.in/blog";
+
   const image = "https://atmfranchise.in/assets/blog-banner.webp";
+
   const modifiedDate = new Date().toISOString();
 
   return (
     <Helmet prioritizeSeoTags>
 
-      {/* ================= PRIMARY SEO ================= */}
+      {/* PRIMARY SEO */}
 
       <title>{title}</title>
 
@@ -46,24 +49,29 @@ const BlogSEO = memo(() => {
 
       <link rel="canonical" href={canonical} />
 
-      {/* ================= OPEN GRAPH ================= */}
+      {/* OPEN GRAPH */}
 
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_IN" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
       <meta property="og:site_name" content="ATM Franchise India" />
 
-      {/* ================= TWITTER ================= */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+
+      <meta property="og:url" content={canonical} />
+
+      <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content="ATM Franchise blog guides in India" />
+
+      {/* TWITTER */}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:creator" content="@atmfranchiseindia" />
 
-      {/* ================= STRUCTURED DATA ================= */}
+      {/* STRUCTURED DATA */}
 
       <script type="application/ld+json">
         {JSON.stringify({
@@ -77,7 +85,7 @@ const BlogSEO = memo(() => {
               "url": "https://atmfranchise.in/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://atmfranchise.in/logo2.png"
+                "url": "https://atmfranchise.in/img/common/logo2.png"
               }
             },
 
@@ -85,17 +93,18 @@ const BlogSEO = memo(() => {
               "@type": "WebSite",
               "@id": "https://atmfranchise.in/#website",
               "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise in India",
+              "name": "ATM Franchise India",
               "publisher": {
                 "@id": "https://atmfranchise.in/#organization"
               }
             },
 
             {
-              "@type": "WebPage",
+              "@type": "CollectionPage",
               "@id": `${canonical}#webpage`,
               "url": canonical,
               "name": title,
+              "inLanguage": "en-IN",
               "dateModified": modifiedDate,
               "isPartOf": {
                 "@id": "https://atmfranchise.in/#website"

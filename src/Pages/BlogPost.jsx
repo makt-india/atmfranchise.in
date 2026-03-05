@@ -16,27 +16,34 @@ import { blogPosts } from "../blog-data";
 ============================================ */
 
 
+
+;
+
 const BlogPostSEO = memo(({ post }) => {
+
   if (!post) return null;
 
   const canonicalUrl = `https://atmfranchise.in/blog/${post.slug}`;
+
   const image =
     post.image || "https://atmfranchise.in/assets/blog-default.webp";
 
   const title =
     post.seoTitle ||
-    `${post.title} – ATM Franchise in India 2026 Guide (Cost, Profit & RBI Rules)`;
+    `${post.title} – ATM Franchise Guide 2026 (Cost, Profit & RBI Rules)`;
 
   const description =
     post.summary ||
-    `Complete 2026 guide on ${post.title}. Learn ATM franchise investment cost, monthly profit margin, commission structure, location strategy and RBI compliance rules in India.`;
+    `Complete guide on ${post.title}. Learn ATM franchise investment cost, monthly profit margin, commission structure, location strategy and RBI compliance rules in India.`;
 
   const modifiedDate = post.updatedAt || post.date;
+
+  const publishedDate = new Date(post.date).toISOString();
 
   return (
     <Helmet prioritizeSeoTags>
 
-      {/* ================= PRIMARY SEO ================= */}
+      {/* PRIMARY SEO */}
 
       <title>{title}</title>
 
@@ -47,29 +54,38 @@ const BlogPostSEO = memo(({ post }) => {
         content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
       />
 
-      <meta name="author" content={post.author || "ATM Franchise Editorial Team"} />
+      <meta
+        name="author"
+        content={post.author || "ATM Franchise Editorial Team"}
+      />
 
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* ================= OPEN GRAPH ================= */}
+      {/* OPEN GRAPH */}
 
       <meta property="og:type" content="article" />
       <meta property="og:locale" content="en_IN" />
+      <meta property="og:site_name" content="ATM Franchise India" />
+
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={image} />
-      <meta property="article:published_time" content={post.date} />
+      <meta property="og:image:alt" content={post.title} />
+
+      <meta property="article:published_time" content={publishedDate} />
       <meta property="article:modified_time" content={modifiedDate} />
 
-      {/* ================= TWITTER ================= */}
+      {/* TWITTER */}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:creator" content="@atmfranchiseindia" />
 
-      {/* ================= STRUCTURED DATA ================= */}
+      {/* STRUCTURED DATA */}
 
       <script type="application/ld+json">
         {JSON.stringify({
@@ -83,7 +99,7 @@ const BlogPostSEO = memo(({ post }) => {
               "url": "https://atmfranchise.in/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://atmfranchise.in/logo2.png"
+                "url": "https://atmfranchise.in/img/common/logo2.png"
               }
             },
 
@@ -91,7 +107,7 @@ const BlogPostSEO = memo(({ post }) => {
               "@type": "WebSite",
               "@id": "https://atmfranchise.in/#website",
               "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise in India",
+              "name": "ATM Franchise India",
               "publisher": {
                 "@id": "https://atmfranchise.in/#organization"
               }
@@ -114,16 +130,17 @@ const BlogPostSEO = memo(({ post }) => {
               "headline": title,
               "description": description,
               "image": [image],
-              "datePublished": post.date,
+              "datePublished": publishedDate,
               "dateModified": modifiedDate,
               "inLanguage": "en-IN",
               "articleSection": "ATM Franchise Guides",
-              "keywords": post.tags || [
-                "ATM Franchise in India",
-                "White Label ATM Cost",
-                "ATM Profit Per Month",
-                "RBI ATM Rules"
-              ],
+              "keywords":
+                post.tags || [
+                  "ATM Franchise in India",
+                  "White Label ATM Cost",
+                  "ATM Profit Per Month",
+                  "RBI ATM Rules"
+                ],
               "mainEntityOfPage": {
                 "@id": `${canonicalUrl}#webpage`
               },
@@ -183,6 +200,7 @@ const BlogPostSEO = memo(({ post }) => {
     </Helmet>
   );
 });
+
 
 /* ============================================
    NOT FOUND
