@@ -25,180 +25,194 @@ const SectionLoader = () => (
 
 
 
+const HomeSEO = () => ( <Helmet prioritizeSeoTags>
 
-const HomeSEO = () => (
-  <Helmet prioritizeSeoTags>
+```
+{/* PRIMARY SEO */}
 
-    {/* PRIMARY SEO */}
+<title>
+  ATM Franchise in India 2026: Cost, Profit, Monthly Income & How to Apply
+</title>
 
-    <title>
-      ATM Franchise in India 2026 – Cost, Profit, Investment & Monthly Income
-    </title>
-
-    <meta
-      name="description"
-      content="ATM Franchise in India with ₹2–5 lakh investment. Learn setup cost, monthly profit, RBI rules, transaction commission and how to apply online."
-    />
-
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-
-    <meta name="author" content="ATM Franchise India" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="theme-color" content="#000000" />
-
-    <link rel="canonical" href="https://atmfranchise.in/" />
-
-    {/* HREFLANG (only keep if pages exist) */}
-
-    <link rel="alternate" hrefLang="en-IN" href="https://atmfranchise.in/" />
-    <link rel="alternate" hrefLang="x-default" href="https://atmfranchise.in/" />
-
-    {/* LCP IMAGE */}
-
- 
-<link
-rel="preload"
-as="image"
-href="/img/common/main1.webp"
-fetchpriority="high"
+<meta
+  name="description"
+  content="Start an ATM Franchise in India with ₹2–5 lakh investment. Learn setup cost, monthly income, RBI rules, transaction commission and step-by-step application process."
 />
 
-    {/* OPEN GRAPH */}
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_IN" />
+<meta name="author" content="ATM Franchise India" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="theme-color" content="#000000" />
 
-    <meta
-      property="og:title"
-      content="ATM Franchise in India 2026 – Cost & Profit Guide"
-    />
+<link rel="canonical" href="https://atmfranchise.in/" />
 
-    <meta
-      property="og:description"
-      content="Low investment ATM Franchise opportunity in India. Learn cost, monthly income and how to apply."
-    />
+{/* HREFLANG */}
 
-    <meta property="og:url" content="https://atmfranchise.in/" />
-    <meta property="og:site_name" content="ATM Franchise India" />
+<link rel="alternate" hrefLang="en-IN" href="https://atmfranchise.in/" />
+<link rel="alternate" hrefLang="x-default" href="https://atmfranchise.in/" />
 
-   
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ATM Franchise setup in India" />
+{/* LCP IMAGE PRELOAD */}
 
-    {/* TWITTER */}
 
-    <meta name="twitter:card" content="summary_large_image" />
+{/* OPEN GRAPH */}
 
-    <meta
-      name="twitter:title"
-      content="ATM Franchise in India 2026 | Start Under ₹5 Lakh"
-    />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_IN" />
 
-    <meta
-      name="twitter:description"
-      content="Check ATM Franchise investment cost, monthly profit margin and application process."
-    />
+<meta
+  property="og:title"
+  content="ATM Franchise in India 2026 – Cost, Profit & Application Guide"
+/>
 
-    
+<meta
+  property="og:description"
+  content="Low investment ATM Franchise opportunity in India. Learn cost, monthly income and how to apply."
+/>
 
-    {/* STRUCTURED DATA */}
+<meta property="og:url" content="https://atmfranchise.in/" />
+<meta property="og:site_name" content="ATM Franchise India" />
 
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
+<meta
+  property="og:image"
+  content="https://atmfranchise.in/img/common/main1.webp"
+/>
 
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="ATM Franchise setup in India" />
+
+{/* TWITTER */}
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta
+  name="twitter:title"
+  content="ATM Franchise in India 2026 | Start Under ₹5 Lakh"
+/>
+
+<meta
+  name="twitter:description"
+  content="Check ATM Franchise investment cost, monthly profit margin and application process."
+/>
+
+<meta
+  name="twitter:image"
+  content="https://atmfranchise.in/img/common/main1.webp"
+/>
+
+<meta name="twitter:site" content="@atmfranchiseindia" />
+
+{/* STRUCTURED DATA */}
+
+<script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+
+      {
+        "@type": "Organization",
+        "@id": "https://atmfranchise.in/#organization",
+        "name": "ATM Franchise India",
+        "url": "https://atmfranchise.in/",
+        "logo": "https://atmfranchise.in/img/common/logo2.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-88833-35553",
+          "contactType": "sales",
+          "areaServed": "IN",
+          "availableLanguage": [
+            "English",
+            "Hindi",
+            "Tamil",
+            "Kannada",
+            "Telugu"
+          ]
+        }
+      },
+
+      {
+        "@type": "WebSite",
+        "@id": "https://atmfranchise.in/#website",
+        "url": "https://atmfranchise.in/",
+        "name": "ATM Franchise India",
+        "publisher": {
+          "@id": "https://atmfranchise.in/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://atmfranchise.in/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+
+      {
+        "@type": "Service",
+        "@id": "https://atmfranchise.in/#service",
+        "name": "ATM Franchise & White Label ATM Setup",
+        "provider": {
+          "@id": "https://atmfranchise.in/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "India"
+        },
+        "description":
+          "Consultation and guidance for starting ATM franchise business including location analysis, operator selection and application support."
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
           {
-            "@type": "Organization",
-            "@id": "https://atmfranchise.in/#organization",
-            "name": "ATM Franchise India",
-            "url": "https://atmfranchise.in/",
-            "logo": "https://atmfranchise.in/img/common/logo2.png",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91-88833-35553",
-              "contactType": "sales",
-              "areaServed": "IN",
-              "availableLanguage": [
-                "English",
-                "Hindi",
-                "Tamil",
-                "Kannada",
-                "Telugu"
-              ]
-            }
-          },
-
-          {
-            "@type": "WebSite",
-            "@id": "https://atmfranchise.in/#website",
-            "url": "https://atmfranchise.in/",
-            "name": "ATM Franchise India",
-            "publisher": {
-              "@id": "https://atmfranchise.in/#organization"
-            },
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://atmfranchise.in/?s={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          },
-
-          {
-            "@type": "Service",
-            "@id": "https://atmfranchise.in/#service",
-            "name": "ATM Franchise & White Label ATM Setup",
-            "provider": {
-              "@id": "https://atmfranchise.in/#organization"
-            },
-            "areaServed": {
-              "@type": "Country",
-              "name": "India"
-            },
-            "description":
-              "Consultation and guidance for starting ATM franchise business including location analysis, operator selection and application support."
-          },
-
-          {
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is the cost of ATM Franchise in India?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text":
-                    "ATM franchise investment usually ranges between ₹2 lakh and ₹5 lakh depending on location, operator and installation requirements."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much profit does an ATM franchise generate?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text":
-                    "Monthly income depends on transaction volume. Locations with high usage can generate stable commission income per withdrawal transaction."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is White Label ATM legal in India?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text":
-                    "Yes. White Label ATMs are authorized by the Reserve Bank of India and operated by licensed non-bank entities under RBI regulations."
-                }
-              }
-            ]
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://atmfranchise.in/"
           }
-
         ]
-      })}
-    </script>
+      },
+
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the cost of ATM Franchise in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "ATM franchise investment usually ranges between ₹2 lakh and ₹5 lakh depending on location, operator and installation requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much profit does an ATM franchise generate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Monthly income depends on transaction volume. Locations with high usage can generate stable commission income per withdrawal transaction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is White Label ATM legal in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Yes. White Label ATMs are authorized by the Reserve Bank of India and operated by licensed non-bank entities under RBI regulations."
+            }
+          }
+        ]
+      }
+
+    ]
+  })}
+</script>
+```
 
   </Helmet>
 );
