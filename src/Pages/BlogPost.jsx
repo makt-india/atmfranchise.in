@@ -25,9 +25,7 @@ const BlogPostSEO = memo(({ post }) => {
 
   const canonicalUrl = `https://atmfranchise.in/blog/${post.slug}`;
 
-  const image =
-    post.image || "https://atmfranchise.in/assets/blog-default.webp";
-
+ 
   const title =
     post.seoTitle ||
     `${post.title} – ATM Franchise Guide 2026 (Cost, Profit & RBI Rules)`;
@@ -71,7 +69,7 @@ const BlogPostSEO = memo(({ post }) => {
       <meta property="og:description" content={description} />
 
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={image} />
+    
       <meta property="og:image:alt" content={post.title} />
 
       <meta property="article:published_time" content={publishedDate} />
@@ -82,7 +80,7 @@ const BlogPostSEO = memo(({ post }) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+    
       <meta name="twitter:creator" content="@atmfranchiseindia" />
 
       {/* STRUCTURED DATA */}

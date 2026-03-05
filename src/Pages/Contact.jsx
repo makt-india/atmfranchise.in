@@ -85,7 +85,7 @@ const ContactSEO = () => {
     "Apply for ATM Franchise in India. Contact our team for investment cost, commission structure, location eligibility and RBI-compliant White Label ATM setup guidance.";
 
   const canonical = "https://atmfranchise.in/contact";
-  const image = "https://atmfranchise.in/assets/contact-banner.webp";
+ 
   const modifiedDate = new Date().toISOString();
 
   return (
@@ -111,7 +111,7 @@ const ContactSEO = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
+     
       <meta property="og:site_name" content="ATM Franchise India" />
 
       {/* ================= TWITTER ================= */}
@@ -119,7 +119,7 @@ const ContactSEO = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+  
 
       {/* ================= STRUCTURED DATA ================= */}
 

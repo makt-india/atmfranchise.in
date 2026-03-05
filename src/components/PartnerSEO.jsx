@@ -14,7 +14,7 @@ const PartnerSEO = ({ partner }) => {
 
   const canonical = `https://atmfranchise.in/atm-franchise/${slug}`;
 
-  const image = `https://atmfranchise.in/img/partners/${slug}-og.png`;
+ 
 
   const publishedDate = "2024-01-01";
   const modifiedDate = new Date().toISOString();
@@ -47,7 +47,7 @@ const PartnerSEO = ({ partner }) => {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:site_name" content="ATM Franchise India" />
-      <meta property="og:image" content={image} />
+     
       <meta property="og:image:alt" content={`${name} ATM Franchise India`} />
       <meta property="og:locale" content="en_IN" />
 
@@ -56,7 +56,7 @@ const PartnerSEO = ({ partner }) => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+     
 
       {/* STRUCTURED DATA */}
 

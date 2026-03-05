@@ -58,13 +58,13 @@ const HomeSEO = () => (
 
     {/* LCP IMAGE */}
 
-    <link
-      rel="preload"
-      as="image"
-      href="https://atmfranchise.in/assets/atm-setup.webp"
-      type="image/webp"
-      fetchpriority="high"
-    />
+ 
+<link
+rel="preload"
+as="image"
+href="/img/common/main1.webp"
+fetchpriority="high"
+/>
 
     {/* OPEN GRAPH */}
 
@@ -84,11 +84,7 @@ const HomeSEO = () => (
     <meta property="og:url" content="https://atmfranchise.in/" />
     <meta property="og:site_name" content="ATM Franchise India" />
 
-    <meta
-      property="og:image"
-      content="https://atmfranchise.in/assets/atm-setup.webp"
-    />
-
+   
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="ATM Franchise setup in India" />
@@ -107,10 +103,7 @@ const HomeSEO = () => (
       content="Check ATM Franchise investment cost, monthly profit margin and application process."
     />
 
-    <meta
-      name="twitter:image"
-      content="https://atmfranchise.in/assets/atm-setup.webp"
-    />
+    
 
     {/* STRUCTURED DATA */}
 

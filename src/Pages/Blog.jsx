@@ -29,8 +29,7 @@ const BlogSEO = memo(() => {
 
   const canonical = "https://atmfranchise.in/blog";
 
-  const image = "https://atmfranchise.in/assets/blog-banner.webp";
-
+  
   const modifiedDate = new Date().toISOString();
 
   return (
@@ -60,7 +59,7 @@ const BlogSEO = memo(() => {
 
       <meta property="og:url" content={canonical} />
 
-      <meta property="og:image" content={image} />
+   
       <meta property="og:image:alt" content="ATM Franchise blog guides in India" />
 
       {/* TWITTER */}
@@ -68,7 +67,7 @@ const BlogSEO = memo(() => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+    
       <meta name="twitter:creator" content="@atmfranchiseindia" />
 
       {/* STRUCTURED DATA */}
