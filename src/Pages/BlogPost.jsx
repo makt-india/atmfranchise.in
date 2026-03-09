@@ -25,7 +25,9 @@ const BlogPostSEO = memo(({ post }) => {
 
   const canonicalUrl = `https://atmfranchise.in/blog/${post.slug}`;
 
- 
+  const image =
+    post.image || "https://atmfranchise.in/img/common/main1.webp";
+
   const title =
     post.seoTitle ||
     `${post.title} – ATM Franchise Guide 2026 (Cost, Profit & RBI Rules)`;
@@ -34,14 +36,14 @@ const BlogPostSEO = memo(({ post }) => {
     post.summary ||
     `Complete guide on ${post.title}. Learn ATM franchise investment cost, monthly profit margin, commission structure, location strategy and RBI compliance rules in India.`;
 
-  const modifiedDate = post.updatedAt || post.date;
-
   const publishedDate = new Date(post.date).toISOString();
+
+  const modifiedDate = new Date(post.updatedAt || post.date).toISOString();
 
   return (
     <Helmet prioritizeSeoTags>
 
-      {/* PRIMARY SEO */}
+      {/* ================= PRIMARY SEO ================= */}
 
       <title>{title}</title>
 
@@ -49,7 +51,7 @@ const BlogPostSEO = memo(({ post }) => {
 
       <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
       />
 
       <meta
@@ -59,31 +61,50 @@ const BlogPostSEO = memo(({ post }) => {
 
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* OPEN GRAPH */}
+      {/* ================= OPEN GRAPH ================= */}
 
       <meta property="og:type" content="article" />
+
       <meta property="og:locale" content="en_IN" />
+
       <meta property="og:site_name" content="ATM Franchise India" />
 
       <meta property="og:title" content={title} />
+
       <meta property="og:description" content={description} />
 
       <meta property="og:url" content={canonicalUrl} />
-    
+
+      <meta property="og:image" content={image} />
+
+      <meta property="og:image:width" content="1200" />
+
+      <meta property="og:image:height" content="630" />
+
       <meta property="og:image:alt" content={post.title} />
 
       <meta property="article:published_time" content={publishedDate} />
+
       <meta property="article:modified_time" content={modifiedDate} />
 
-      {/* TWITTER */}
+      <meta
+        property="article:author"
+        content={post.author || "ATM Franchise Editorial Team"}
+      />
+
+      {/* ================= TWITTER ================= */}
 
       <meta name="twitter:card" content="summary_large_image" />
+
       <meta name="twitter:title" content={title} />
+
       <meta name="twitter:description" content={description} />
-    
+
+      <meta name="twitter:image" content={image} />
+
       <meta name="twitter:creator" content="@atmfranchiseindia" />
 
-      {/* STRUCTURED DATA */}
+      {/* ================= STRUCTURED DATA ================= */}
 
       <script type="application/ld+json">
         {JSON.stringify({
@@ -91,34 +112,10 @@ const BlogPostSEO = memo(({ post }) => {
           "@graph": [
 
             {
-              "@type": "Organization",
-              "@id": "https://atmfranchise.in/#organization",
-              "name": "ATM Franchise India",
-              "url": "https://atmfranchise.in/",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://atmfranchise.in/img/common/logo2.png"
-              }
-            },
-
-            {
-              "@type": "WebSite",
-              "@id": "https://atmfranchise.in/#website",
-              "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise India",
-              "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
-              }
-            },
-
-            {
               "@type": "WebPage",
               "@id": `${canonicalUrl}#webpage`,
               "url": canonicalUrl,
               "name": title,
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              },
               "dateModified": modifiedDate
             },
 
@@ -127,7 +124,7 @@ const BlogPostSEO = memo(({ post }) => {
               "@id": `${canonicalUrl}#article`,
               "headline": title,
               "description": description,
-              "image": [image],
+              "image": image,
               "datePublished": publishedDate,
               "dateModified": modifiedDate,
               "inLanguage": "en-IN",
@@ -147,7 +144,12 @@ const BlogPostSEO = memo(({ post }) => {
                 "name": post.author || "ATM Franchise Editorial Team"
               },
               "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
+                "@type": "Organization",
+                "name": "ATM Franchise India",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://atmfranchise.in/img/common/logo2.png"
+                }
               }
             },
 
@@ -198,8 +200,6 @@ const BlogPostSEO = memo(({ post }) => {
     </Helmet>
   );
 });
-
-
 /* ============================================
    NOT FOUND
 ============================================ */

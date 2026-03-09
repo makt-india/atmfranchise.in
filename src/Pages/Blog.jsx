@@ -29,48 +29,63 @@ const BlogSEO = memo(() => {
 
   const canonical = "https://atmfranchise.in/blog";
 
-  
+  const image = "https://atmfranchise.in/img/common/main1.webp";
+
   const modifiedDate = new Date().toISOString();
 
   return (
     <Helmet prioritizeSeoTags>
 
-      {/* PRIMARY SEO */}
+      {/* ================= PRIMARY SEO ================= */}
 
       <title>{title}</title>
 
       <meta name="description" content={description} />
 
+      <meta name="author" content="ATM Franchise India Editorial Team" />
+
       <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
       />
 
       <link rel="canonical" href={canonical} />
 
-      {/* OPEN GRAPH */}
+      {/* ================= OPEN GRAPH ================= */}
 
       <meta property="og:type" content="website" />
+
       <meta property="og:locale" content="en_IN" />
+
       <meta property="og:site_name" content="ATM Franchise India" />
 
       <meta property="og:title" content={title} />
+
       <meta property="og:description" content={description} />
 
       <meta property="og:url" content={canonical} />
 
-   
+      <meta property="og:image" content={image} />
+
+      <meta property="og:image:width" content="1200" />
+
+      <meta property="og:image:height" content="630" />
+
       <meta property="og:image:alt" content="ATM Franchise blog guides in India" />
 
-      {/* TWITTER */}
+      {/* ================= TWITTER ================= */}
 
       <meta name="twitter:card" content="summary_large_image" />
+
       <meta name="twitter:title" content={title} />
+
       <meta name="twitter:description" content={description} />
-    
+
+      <meta name="twitter:image" content={image} />
+
       <meta name="twitter:creator" content="@atmfranchiseindia" />
 
-      {/* STRUCTURED DATA */}
+      {/* ================= STRUCTURED DATA ================= */}
 
       <script type="application/ld+json">
         {JSON.stringify({
@@ -78,36 +93,13 @@ const BlogSEO = memo(() => {
           "@graph": [
 
             {
-              "@type": "Organization",
-              "@id": "https://atmfranchise.in/#organization",
-              "name": "ATM Franchise India",
-              "url": "https://atmfranchise.in/",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://atmfranchise.in/img/common/logo2.png"
-              }
-            },
-
-            {
-              "@type": "WebSite",
-              "@id": "https://atmfranchise.in/#website",
-              "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise India",
-              "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
-              }
-            },
-
-            {
               "@type": "CollectionPage",
               "@id": `${canonical}#webpage`,
               "url": canonical,
               "name": title,
+              "description": description,
               "inLanguage": "en-IN",
-              "dateModified": modifiedDate,
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              }
+              "dateModified": modifiedDate
             },
 
             {
@@ -116,8 +108,17 @@ const BlogSEO = memo(() => {
               "url": canonical,
               "name": "ATM Franchise Blog",
               "description": description,
+              "inLanguage": "en-IN",
+              "mainEntityOfPage": {
+                "@id": `${canonical}#webpage`
+              },
               "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
+                "@type": "Organization",
+                "name": "ATM Franchise India",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://atmfranchise.in/img/common/logo2.png"
+                }
               }
             },
 
@@ -146,8 +147,6 @@ const BlogSEO = memo(() => {
     </Helmet>
   );
 });
-
-
 /* ============================================
    HERO SECTION
 ============================================ */

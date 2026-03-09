@@ -4,31 +4,45 @@
 
 User-agent: *
 
-# Block sensitive areas
+# Block sensitive folders
 Disallow: /admin/
 Disallow: /config/
 Disallow: /private/
 Disallow: /.env
 Disallow: /cgi-bin/
 
-# Block internal search
+# Block internal search parameters
 Disallow: /search
 Disallow: /*?s=
 Disallow: /*?query=
 
-# Crawl rate control for non-Google bots
-Crawl-delay: 2
+# Allow important rendering resources
+Allow: /img/
+Allow: /assets/
+Allow: /static/
 
-# Sitemap location
+# Sitemap
 Sitemap: https://atmfranchise.in/sitemap.xml
 
 
-# ============================
-# BLOCK AI TRAINING BOTS
-# ============================
+# ===============================
+# AI Crawlers Allowed
+# ===============================
 
 User-agent: GPTBot
-Disallow: /
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /

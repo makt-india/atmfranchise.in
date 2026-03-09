@@ -14,181 +14,149 @@ const description =
 
 const canonical = `https://atmfranchise.in/atm-franchise/${slug}`;
 
-const publishedDate = "2024-01-01";
+const image = "https://atmfranchise.in/img/common/main1.webp";
+
 const modifiedDate = new Date().toISOString();
 
-return ( <Helmet prioritizeSeoTags>
+return (
+<Helmet prioritizeSeoTags>
 
-```
-  {/* PRIMARY SEO */}
+{/* PRIMARY SEO */}
 
-  <title>{title}</title>
+<title>{title}</title>
 
-  <meta name="description" content={description} />
+<meta name="description" content={description} />
 
-  <meta
-    name="robots"
-    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-  />
+<meta name="author" content="ATM Franchise India" />
 
-  <link rel="canonical" href={canonical} />
+<meta
+name="robots"
+content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+/>
 
-  {/* HREFLANG */}
+<link rel="canonical" href={canonical} />
 
-  <link rel="alternate" hrefLang="en-IN" href={canonical} />
-  <link rel="alternate" hrefLang="x-default" href={canonical} />
+{/* HREFLANG */}
 
-  {/* OPEN GRAPH */}
+<link rel="alternate" hrefLang="en-IN" href={canonical} />
+<link rel="alternate" hrefLang="x-default" href={canonical} />
 
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonical} />
-  <meta property="og:site_name" content="ATM Franchise India" />
-  <meta property="og:locale" content="en_IN" />
+{/* OPEN GRAPH */}
 
-  {/* TWITTER */}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content="ATM Franchise India" />
+<meta property="og:locale" content="en_IN" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
-  {/* STRUCTURED DATA */}
+{/* TWITTER */}
 
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
 
-        {
-          "@type": "Organization",
-          "@id": "https://atmfranchise.in/#organization",
-          "name": "ATM Franchise India",
-          "url": "https://atmfranchise.in/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://atmfranchise.in/img/common/logo2.png"
-          }
-        },
+{/* STRUCTURED DATA */}
 
-        {
-          "@type": "WebSite",
-          "@id": "https://atmfranchise.in/#website",
-          "url": "https://atmfranchise.in/",
-          "name": "ATM Franchise India",
-          "publisher": {
-            "@id": "https://atmfranchise.in/#organization"
-          }
-        },
+<script type="application/ld+json">
+{JSON.stringify({
+"@context": "https://schema.org",
+"@graph": [
 
-        {
-          "@type": "WebPage",
-          "@id": `${canonical}#webpage`,
-          "url": canonical,
-          "name": title,
-          "dateModified": modifiedDate,
-          "isPartOf": {
-            "@id": "https://atmfranchise.in/#website"
-          }
-        },
+{
+"@type": "WebPage",
+"@id": `${canonical}#webpage`,
+"url": canonical,
+"name": title,
+"description": description,
+"inLanguage": "en-IN",
+"dateModified": modifiedDate
+},
 
-        {
-          "@type": "Article",
-          "@id": `${canonical}#article`,
-          "headline": title,
-          "description": description,
-          "datePublished": publishedDate,
-          "dateModified": modifiedDate,
-          "author": {
-            "@id": "https://atmfranchise.in/#organization"
-          },
-          "publisher": {
-            "@id": "https://atmfranchise.in/#organization"
-          },
-          "mainEntityOfPage": {
-            "@id": `${canonical}#webpage`
-          }
-        },
+{
+"@type": "Service",
+"@id": `${canonical}#service`,
+"name": `${name} ATM Franchise`,
+"description": description,
+"url": canonical,
+"provider": {
+"@type": "Organization",
+"name": "ATM Franchise India",
+"url": "https://atmfranchise.in/"
+},
+"areaServed": {
+"@type": "Country",
+"name": "India"
+}
+},
 
-        {
-          "@type": "Service",
-          "@id": `${canonical}#service`,
-          "name": `${name} ATM Franchise`,
-          "description": description,
-          "url": canonical,
-          "provider": {
-            "@id": "https://atmfranchise.in/#organization"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "India"
-          }
-        },
+{
+"@type": "FAQPage",
+"mainEntity": [
+{
+"@type": "Question",
+"name": `What is the cost of ${name} ATM Franchise in India?`,
+"acceptedAnswer": {
+"@type": "Answer",
+"text":
+"Investment typically ranges between ₹2 lakh and ₹5 lakh depending on location, operator setup and infrastructure requirements."
+}
+},
+{
+"@type": "Question",
+"name": `How much profit can I earn from ${name} ATM Franchise?`,
+"acceptedAnswer": {
+"@type": "Answer",
+"text":
+"Monthly income depends on ATM transaction volume and interchange commission structure."
+}
+},
+{
+"@type": "Question",
+"name": `Is ${name} ATM Franchise RBI approved?`,
+"acceptedAnswer": {
+"@type": "Answer",
+"text":
+"White Label ATMs operate under RBI regulations through licensed non-bank ATM operators."
+}
+}
+]
+},
 
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": `What is the cost of ${name} ATM Franchise in India?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text":
-                  "Investment typically ranges between ₹2 lakh and ₹5 lakh depending on location, operator setup and infrastructure requirements."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": `How much profit can I earn from ${name} ATM Franchise?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text":
-                  "Monthly income depends on ATM transaction volume and interchange commission structure."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": `Is ${name} ATM Franchise RBI approved?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text":
-                  "White Label ATMs operate under RBI regulations through licensed non-bank ATM operators."
-              }
-            }
-          ]
-        },
+{
+"@type": "BreadcrumbList",
+"itemListElement": [
+{
+"@type": "ListItem",
+"position": 1,
+"name": "Home",
+"item": "https://atmfranchise.in/"
+},
+{
+"@type": "ListItem",
+"position": 2,
+"name": "ATM Franchise",
+"item": "https://atmfranchise.in/atm-franchise"
+},
+{
+"@type": "ListItem",
+"position": 3,
+"name": name,
+"item": canonical
+}
+]
+}
 
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://atmfranchise.in/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "ATM Franchise",
-              "item": "https://atmfranchise.in/atm-franchise"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": name,
-              "item": canonical
-            }
-          ]
-        }
-
-      ]
-    })}
-  </script>
+]
+})}
+</script>
 
 </Helmet>
-
-
 );
 };
 

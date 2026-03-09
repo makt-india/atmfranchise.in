@@ -27,98 +27,68 @@ const AboutUsSEO = () => {
 
   const canonical = "https://atmfranchise.in/about";
 
- 
+  const image = "https://atmfranchise.in/img/common/main1.webp";
 
   const modifiedDate = new Date().toISOString();
 
   return (
     <Helmet prioritizeSeoTags>
 
-      {/* PRIMARY SEO */}
+      {/* ================= PRIMARY SEO ================= */}
 
       <title>{title}</title>
 
       <meta name="description" content={description} />
 
+      <meta name="author" content="ATM Franchise India" />
+
       <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1"
+        content="index,follow,max-image-preview:large,max-snippet:-1"
       />
 
       <link rel="canonical" href={canonical} />
 
-      {/* OPEN GRAPH */}
+      {/* ================= OPEN GRAPH ================= */}
 
       <meta property="og:type" content="website" />
+
       <meta property="og:locale" content="en_IN" />
+
       <meta property="og:site_name" content="ATM Franchise India" />
 
       <meta property="og:title" content={title} />
+
       <meta property="og:description" content={description} />
 
       <meta property="og:url" content={canonical} />
 
-   
+      <meta property="og:image" content={image} />
+
+      <meta property="og:image:width" content="1200" />
+
+      <meta property="og:image:height" content="630" />
+
       <meta property="og:image:alt" content="About ATM Franchise India" />
 
-      {/* TWITTER */}
+      {/* ================= TWITTER ================= */}
 
       <meta name="twitter:card" content="summary_large_image" />
+
       <meta name="twitter:title" content={title} />
+
       <meta name="twitter:description" content={description} />
-      
+
+      <meta name="twitter:image" content={image} />
+
       <meta name="twitter:creator" content="@atmfranchiseindia" />
 
-      {/* STRUCTURED DATA */}
+      {/* ================= STRUCTURED DATA ================= */}
 
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
-
-            {
-              "@type": "Organization",
-              "@id": "https://atmfranchise.in/#organization",
-              "name": "ATM Franchise India",
-              "url": "https://atmfranchise.in/",
-              "description":
-                "ATM Franchise India helps entrepreneurs start RBI-compliant White Label ATM franchises with guidance on investment, setup and operations.",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://atmfranchise.in/img/common/logo2.png"
-              },
-              "foundingLocation": {
-                "@type": "Country",
-                "name": "India"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+91-88833-35553",
-                "contactType": "customer support",
-                "areaServed": "IN",
-                "availableLanguage": [
-                  "English",
-                  "Hindi",
-                  "Tamil",
-                  "Kannada",
-                  "Telugu"
-                ]
-              },
-              "sameAs": [
-                "https://www.facebook.com/atmfranchiseindia",
-                "https://www.linkedin.com/company/atmfranchise"
-              ]
-            },
-
-            {
-              "@type": "WebSite",
-              "@id": "https://atmfranchise.in/#website",
-              "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise India",
-              "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
-              }
-            },
 
             {
               "@type": "AboutPage",
@@ -127,13 +97,23 @@ const AboutUsSEO = () => {
               "name": title,
               "description": description,
               "inLanguage": "en-IN",
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              },
-              "about": {
-                "@id": "https://atmfranchise.in/#organization"
-              },
               "dateModified": modifiedDate
+            },
+
+            {
+              "@type": "Organization",
+              "name": "ATM Franchise India",
+              "url": "https://atmfranchise.in/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://atmfranchise.in/img/common/logo2.png"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-88833-35553",
+                "contactType": "customer support",
+                "areaServed": "IN"
+              }
             },
 
             {
@@ -161,7 +141,6 @@ const AboutUsSEO = () => {
     </Helmet>
   );
 };
-
 
 /* ============================================
    HERO SECTION: Performance Optimized

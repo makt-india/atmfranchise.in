@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<!-- ================= CORE ================= -->
+<urlset 
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+<!-- ================= CORE PAGES ================= -->
 
 <url>
 <loc>https://atmfranchise.in/</loc>
@@ -16,8 +19,6 @@
 <changefreq>weekly</changefreq>
 <priority>0.9</priority>
 </url>
-
-<!-- ================= COMPANY ================= -->
 
 <url>
 <loc>https://atmfranchise.in/about</loc>
@@ -40,7 +41,7 @@
 <priority>0.5</priority>
 </url>
 
-<!-- ================= PARTNERS ================= -->
+<!-- ================= PARTNER PAGES ================= -->
 
 <url>
 <loc>https://atmfranchise.in/atm-franchise/hitachi</loc>

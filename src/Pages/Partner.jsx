@@ -26,12 +26,14 @@ import {
 const PartnerHero = ({ partner }) => (
   <div className="relative py-24 sm:py-32 md:py-18 bg-slate-900 overflow-hidden">
 
-    <img
-      src={partner.image || `https://images.unsplash.com/photo-1565514020125-2716a63257f0?auto=format&fit=crop&q=80`}
-      alt={`${partner.name} Partnership`}
-      className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
-    />
-
+   <img
+  src={partner.image}
+  alt={`${partner.name} Partnership`}
+  className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
+  loading="eager"
+  fetchpriority="high"
+  decoding="async"
+/>
     <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-slate-900 via-slate-900/95 to-transparent"></div>
 
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 z-10 text-center md:text-left">
@@ -254,15 +256,15 @@ const PartnerWhySection = ({ partner }) => {
               <div key={index} className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
                 <div className={reverse ? "md:order-2" : "md:order-1"}>
 <div className="rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 border border-gray-100">
-  <img
-    src={item.image}
-    alt={item.title}
-    className="w-full h-[700px] object-cover hover:scale-105 transition-transform duration-700"
-    onError={(e) => {
-      e.target.src =
-        "https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&q=80";
-    }}
-  />
+ <img
+  src={item.image}
+  alt={item.title}
+  loading="lazy"
+  decoding="async"
+  width="800"
+  height="500"
+  className="w-full h-auto object-cover rounded-3xl hover:scale-105 transition-transform duration-700"
+/>
 </div>
                 </div>
 

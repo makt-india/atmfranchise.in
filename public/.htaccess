@@ -10,38 +10,19 @@ RewriteEngine On
 # -------------------------------------
 # 1. FORCE HTTPS + NON-WWW
 # -------------------------------------
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^atmfranchise\.in$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.atmfranchise\.in$ [NC]
 RewriteRule ^ https://atmfranchise.in%{REQUEST_URI} [L,R=301]
 
 # -------------------------------------
 # 2. REMOVE TRAILING SLASH
 # -------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} .+/$
-RewriteRule ^(.+)/$ https://atmfranchise.in/$1 [L,R=301]
+RewriteCond %{THE_REQUEST} \s/+(.+?)/+\s
+RewriteRule ^ %1 [R=301,L]
 
 # -------------------------------------
-# 3. BLOCK SENSITIVE FILES
-# -------------------------------------
-<FilesMatch "(^\.|composer\.(json|lock)|package\.json|package-lock\.json|vite\.config\.js|\.env)">
-Require all denied
-</FilesMatch>
-
-# -------------------------------------
-# 4. BLOCK COMMON ATTACKS
-# -------------------------------------
-RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|<|>|%3C|%3E) [NC]
-RewriteRule .* - [F,L]
-
-# -------------------------------------
-# 5. SERVE SITEMAP + ROBOTS DIRECTLY
-# -------------------------------------
-RewriteRule ^robots\.txt$ - [L]
-RewriteRule ^sitemap.*\.xml$ - [L]
-
-# -------------------------------------
-# 6. STATIC FILES
+# 3. SERVE STATIC FILES DIRECTLY
 # -------------------------------------
 RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|map)$ [NC]
 RewriteRule ^ - [L]
@@ -51,38 +32,73 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
 # -------------------------------------
+# 4. BLOCK SENSITIVE FILES
+# -------------------------------------
+<FilesMatch "(^\.|composer\.(json|lock)|package\.json|package-lock\.json|vite\.config\.js|\.env)">
+Require all denied
+</FilesMatch>
+
+# -------------------------------------
+# 5. BLOCK COMMON ATTACKS
+# -------------------------------------
+RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|<|>|%3C|%3E) [NC]
+RewriteRule .* - [F,L]
+
+# -------------------------------------
+# 6. SERVE ROBOTS + SITEMAP
+# -------------------------------------
+RewriteRule ^robots\.txt$ - [L]
+RewriteRule ^sitemap.*\.xml$ - [L]
+
+# -------------------------------------
 # 7. REACT ROUTER FALLBACK
 # -------------------------------------
 RewriteRule ^ index.html [L]
 
 # -------------------------------------
-# 8. BROTLI
+# 8. BROTLI COMPRESSION
 # -------------------------------------
 <IfModule mod_brotli.c>
 BrotliCompressionQuality 5
-AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+AddOutputFilterByType BROTLI_COMPRESS \
+text/html text/plain text/xml text/css \
+application/javascript application/json \
+application/xml image/svg+xml
 </IfModule>
 
 # -------------------------------------
-# 9. GZIP
+# 9. GZIP FALLBACK
 # -------------------------------------
 <IfModule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+AddOutputFilterByType DEFLATE \
+text/html text/plain text/xml text/css \
+application/javascript application/json \
+application/xml image/svg+xml
 </IfModule>
 
 # -------------------------------------
 # 10. BROWSER CACHE
 # -------------------------------------
 <IfModule mod_expires.c>
+
 ExpiresActive On
+
+# Images
 ExpiresByType image/webp "access plus 1 year"
 ExpiresByType image/jpeg "access plus 1 year"
 ExpiresByType image/png "access plus 1 year"
 ExpiresByType image/svg+xml "access plus 1 year"
+
+# Fonts
 ExpiresByType font/woff2 "access plus 1 year"
+
+# CSS + JS
 ExpiresByType text/css "access plus 1 month"
 ExpiresByType application/javascript "access plus 1 month"
+
+# Default
 ExpiresDefault "access plus 7 days"
+
 </IfModule>
 
 # -------------------------------------
@@ -94,7 +110,9 @@ FileETag None
 # 12. CACHE CONTROL
 # -------------------------------------
 <IfModule mod_headers.c>
-Header set Cache-Control "public"
+
+Header set Cache-Control "public, max-age=604800, immutable"
+
 </IfModule>
 
 # -------------------------------------
@@ -105,12 +123,25 @@ Header set Cache-Control "public"
 Header always set X-Content-Type-Options "nosniff"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
 Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
 Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
 Header always set Cross-Origin-Opener-Policy "same-origin"
 Header always set Cross-Origin-Resource-Policy "same-origin"
 Header always set X-Permitted-Cross-Domain-Policies "none"
 
-Header set Content-Security-Policy "default-src 'self'; img-src 'self' https: data:; script-src 'self' https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self' https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https:; frame-src https:;"
+# CSP FIXED (worker-src added for Vite + analytics compatibility)
+Header set Content-Security-Policy "
+default-src 'self';
+img-src 'self' https: data:;
+script-src 'self' https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms 'unsafe-inline';
+style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+font-src https://fonts.gstatic.com data:;
+connect-src 'self' https://www.google-analytics.com https://connect.facebook.net https://www.clarity.ms https:;
+worker-src 'self' blob:;
+frame-src https:;
+"
 
 </IfModule>

@@ -85,7 +85,9 @@ const ContactSEO = () => {
     "Apply for ATM Franchise in India. Contact our team for investment cost, commission structure, location eligibility and RBI-compliant White Label ATM setup guidance.";
 
   const canonical = "https://atmfranchise.in/contact";
- 
+
+  const image = "https://atmfranchise.in/img/common/main1.webp";
+
   const modifiedDate = new Date().toISOString();
 
   return (
@@ -97,9 +99,11 @@ const ContactSEO = () => {
 
       <meta name="description" content={description} />
 
+      <meta name="author" content="ATM Franchise India" />
+
       <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
       />
 
       <link rel="canonical" href={canonical} />
@@ -111,15 +115,18 @@ const ContactSEO = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
-     
       <meta property="og:site_name" content="ATM Franchise India" />
+
+      <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* ================= TWITTER ================= */}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-  
+      <meta name="twitter:image" content={image} />
 
       {/* ================= STRUCTURED DATA ================= */}
 
@@ -129,14 +136,20 @@ const ContactSEO = () => {
           "@graph": [
 
             {
-              "@type": "Organization",
-              "@id": "https://atmfranchise.in/#organization",
-              "name": "ATM Franchise India",
-              "url": "https://atmfranchise.in/",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://atmfranchise.in/logo2.png"
-              },
+              "@type": "WebPage",
+              "@id": `${canonical}#webpage`,
+              "url": canonical,
+              "name": title,
+              "description": description,
+              "dateModified": modifiedDate
+            },
+
+            {
+              "@type": "ContactPage",
+              "@id": `${canonical}#contactpage`,
+              "url": canonical,
+              "name": title,
+              "description": description,
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+91-88833-35553",
@@ -150,41 +163,6 @@ const ContactSEO = () => {
                   "Kannada",
                   "Telugu"
                 ]
-              }
-            },
-
-            {
-              "@type": "WebSite",
-              "@id": "https://atmfranchise.in/#website",
-              "url": "https://atmfranchise.in/",
-              "name": "ATM Franchise in India",
-              "publisher": {
-                "@id": "https://atmfranchise.in/#organization"
-              }
-            },
-
-            {
-              "@type": "WebPage",
-              "@id": `${canonical}#webpage`,
-              "url": canonical,
-              "name": title,
-              "dateModified": modifiedDate,
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              }
-            },
-
-            {
-              "@type": "ContactPage",
-              "@id": `${canonical}#contactpage`,
-              "url": canonical,
-              "name": title,
-              "description": description,
-              "isPartOf": {
-                "@id": "https://atmfranchise.in/#website"
-              },
-              "about": {
-                "@id": "https://atmfranchise.in/#organization"
               }
             },
 
@@ -213,7 +191,6 @@ const ContactSEO = () => {
     </Helmet>
   );
 };
-
 
 /* =========================================
    HERO
